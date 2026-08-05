@@ -24,6 +24,8 @@ class Settings:
     skills_file: Path
     learning_paths_file: Path
     recent_updates_file: Path
+    project_root: Path
+    github_owner: str
     start_marker: str
     end_marker: str
 
@@ -31,6 +33,22 @@ class Settings:
 def load_courses(path: Path) -> list[Course]:
     data = json.loads(path.read_text(encoding="utf-8"))
     return [Course(**item) for item in data.get("courses", [])]
+
+
+def save_courses(path: Path, courses: list[Course]) -> None:
+    data = {
+        "courses": [
+            {
+                "slug": c.slug,
+                "title": c.title,
+                "repository": c.repository,
+                "branch": c.branch,
+                "enabled": c.enabled,
+            }
+            for c in courses
+        ]
+    }
+    path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
 
 
 def load_settings(path: Path) -> Settings:
@@ -49,6 +67,8 @@ def load_settings(path: Path) -> Settings:
         skills_file=resolve(data.get("skills_file", "docs/training/skill-matrix.md")),
         learning_paths_file=resolve(data.get("learning_paths_file", "docs/training/learning-paths.md")),
         recent_updates_file=resolve(data.get("recent_updates_file", "docs/training/recent-updates.md")),
+        project_root=Path(data.get("project_root", "~/projects")).expanduser().resolve(),
+        github_owner=data.get("github_owner", ""),
         start_marker=data.get("start_marker", "      # BEGIN AUTOMATED COURSES"),
         end_marker=data.get("end_marker", "      # END AUTOMATED COURSES"),
     )

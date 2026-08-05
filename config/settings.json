@@ -7,6 +7,8 @@
   "skills_file": "docs/training/skill-matrix.md",
   "learning_paths_file": "docs/training/learning-paths.md",
   "recent_updates_file": "docs/training/recent-updates.md",
+  "project_root": "~/projects",
+  "github_owner": "jrwroberts1976",
   "start_marker": "      # BEGIN AUTOMATED COURSES",
   "end_marker": "      # END AUTOMATED COURSES"
 }
