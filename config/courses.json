@@ -6,6 +6,13 @@
       "repository": "git@github.com:jrwroberts1976/ansible-training.git",
       "branch": "main",
       "enabled": true
+    },
+    {
+      "slug": "networking",
+      "title": "Network Engineering",
+      "repository": "git@github.com:jrwroberts1976/network-engineering-training.git",
+      "branch": "main",
+      "enabled": true
     }
   ]
 }
