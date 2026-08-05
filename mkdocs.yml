@@ -1,0 +1,15 @@
+site_name: Training Platform Manager
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - Installation: installation.md
+  - Quick Start: quickstart.md
+  - Configuration: configuration.md
+  - Architecture: architecture.md
+  - Commands: commands.md
+  - Plugin Architecture: plugins.md
+  - Development: development.md
+  - Releases: releases.md
+  - Roadmap: roadmap.md
