@@ -1,4 +1,6 @@
-# Training Platform Manager v0.2
+# Training Platform Manager v0.4
+
+Training Platform Manager synchronises course repositories and generates the central engineering learning platform.
 
 ## Commands
 
@@ -6,24 +8,29 @@
 python3 training_manager.py sync
 python3 training_manager.py validate
 python3 training_manager.py nav
-python3 training_manager.py stats
+python3 training_manager.py catalog
 python3 training_manager.py build
 ```
 
 `build` performs:
 
-1. Course repository synchronisation
+1. Repository synchronisation
 2. Structural validation
-3. Central MkDocs navigation generation
-4. Course statistics generation
+3. MkDocs navigation generation
+4. Homepage generation
+5. Course statistics generation
+6. Skill matrix generation
+7. Learning-path generation
+8. Recent-update generation
 
-## Central MkDocs markers
+## Course manifests
 
-```yaml
-      # BEGIN AUTOMATED COURSES
-      # END AUTOMATED COURSES
+Each course may provide a metadata object in `course-manifest.json`.
+
+See:
+
+```text
+templates/course-manifest.example.json
 ```
 
-## Add a course
-
-Add one object to `config/courses.json`, commit it, and push the manager repository.
+Existing lesson-list manifests are handled safely using fallback metadata.

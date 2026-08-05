@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "training-platform-manager"
-version = "0.2.0"
-description = "Synchronise training repositories and generate MkDocs navigation"
+version = "0.4.0"
+description = "Synchronise training repositories and generate an engineering learning platform"
 requires-python = ">=3.11"
 
 [project.scripts]

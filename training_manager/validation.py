@@ -8,20 +8,20 @@ from .config import Course, Settings
 
 def validate_course(course: Course, settings: Settings) -> list[str]:
     errors: list[str] = []
-    course_root = settings.courses_root / course.slug
+    root = settings.courses_root / course.slug
 
-    if not course_root.exists():
+    if not root.exists():
         return [f"{course.title}: course directory is missing"]
 
-    if not (course_root / "README.md").exists():
+    if not (root / "README.md").exists():
         errors.append(f"{course.title}: README.md is missing")
 
-    modules_root = course_root / "modules"
+    modules_root = root / "modules"
     if not modules_root.exists():
         errors.append(f"{course.title}: modules directory is missing")
         return errors
 
-    seen_numbers: dict[str, Path] = {}
+    seen: dict[str, Path] = {}
 
     for module in sorted(path for path in modules_root.iterdir() if path.is_dir()):
         if not (module / "README.md").exists():
@@ -33,26 +33,23 @@ def validate_course(course: Course, settings: Settings) -> list[str]:
 
             match = re.match(r"^(\d+)-", lesson.name)
             if not match:
-                errors.append(
-                    f"{course.title}: lesson has no numeric prefix: {lesson}"
-                )
+                errors.append(f"{course.title}: lesson has no numeric prefix: {lesson}")
                 continue
 
             number = match.group(1)
-            if number in seen_numbers:
+            if number in seen:
                 errors.append(
                     f"{course.title}: duplicate lesson number {number}: "
-                    f"{seen_numbers[number]} and {lesson}"
+                    f"{seen[number]} and {lesson}"
                 )
             else:
-                seen_numbers[number] = lesson
+                seen[number] = lesson
 
     return errors
 
 
 def validate_all(courses: list[Course], settings: Settings) -> None:
     errors: list[str] = []
-
     for course in courses:
         if course.enabled:
             errors.extend(validate_course(course, settings))

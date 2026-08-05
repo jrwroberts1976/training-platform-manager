@@ -2,7 +2,11 @@
   "platform_root": "~/docker/stacks/training-platform",
   "courses_root": "docs/courses",
   "mkdocs_file": "mkdocs.yml",
+  "homepage_file": "docs/training/index.md",
   "stats_file": "docs/training/course-statistics.md",
+  "skills_file": "docs/training/skill-matrix.md",
+  "learning_paths_file": "docs/training/learning-paths.md",
+  "recent_updates_file": "docs/training/recent-updates.md",
   "start_marker": "      # BEGIN AUTOMATED COURSES",
   "end_marker": "      # END AUTOMATED COURSES"
 }

@@ -6,7 +6,6 @@ from .utils import run
 
 def sync_course(course: Course, settings: Settings) -> None:
     destination = settings.courses_root / course.slug
-
     print(f"\nSynchronising {course.title}")
 
     if (destination / ".git").exists():
@@ -18,27 +17,21 @@ def sync_course(course: Course, settings: Settings) -> None:
     if destination.exists():
         raise RuntimeError(
             f"{destination} exists but is not a normal Git repository. "
-            "Move or remove the directory before continuing."
+            "Move or remove it before continuing."
         )
 
     destination.parent.mkdir(parents=True, exist_ok=True)
-
-    run(
-        [
-            "git",
-            "clone",
-            "--branch",
-            course.branch,
-            "--single-branch",
-            course.repository,
-            str(destination),
-        ]
-    )
+    run([
+        "git", "clone",
+        "--branch", course.branch,
+        "--single-branch",
+        course.repository,
+        str(destination),
+    ])
 
 
 def sync_courses(courses: list[Course], settings: Settings) -> None:
     for course in courses:
         if course.enabled:
             sync_course(course, settings)
-
     print("\nAll registered courses are up to date")

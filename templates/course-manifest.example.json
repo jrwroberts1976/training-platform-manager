@@ -1,0 +1,21 @@
+{
+  "slug": "terraform",
+  "title": "Terraform and Infrastructure as Code",
+  "description": "Practical Terraform training from fundamentals to multi-cloud delivery.",
+  "level": "Beginner to Intermediate",
+  "estimated_hours": 30,
+  "tags": [
+    "Terraform",
+    "IaC",
+    "AWS",
+    "Azure",
+    "CI/CD"
+  ],
+  "requires": [
+    "linux",
+    "git",
+    "networking"
+  ],
+  "icon": "terraform",
+  "featured": true
+}
