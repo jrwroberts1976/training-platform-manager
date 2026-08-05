@@ -2,6 +2,7 @@
   "platform_root": "~/docker/stacks/training-platform",
   "courses_root": "docs/courses",
   "mkdocs_file": "mkdocs.yml",
+  "stats_file": "docs/training/course-statistics.md",
   "start_marker": "      # BEGIN AUTOMATED COURSES",
   "end_marker": "      # END AUTOMATED COURSES"
 }
