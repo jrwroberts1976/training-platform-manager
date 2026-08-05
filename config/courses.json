@@ -1,0 +1,11 @@
+{
+  "courses": [
+    {
+      "slug": "ansible",
+      "title": "Ansible Automation",
+      "repository": "git@github.com:jrwroberts1976/ansible-training.git",
+      "branch": "main",
+      "enabled": true
+    }
+  ]
+}
